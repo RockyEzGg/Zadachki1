@@ -88,4 +88,28 @@
           ((poisk (car a) b) (subset (cdr a) b))
           (t nil)))
 
+;ФВП
+;2 - Определите функицонал (MAPLIST fn список) для одного списочного аргумента
+
+(defun maplst(fn lst)
+    (cond ((null lst) nil)
+          (t (cons (funcall fn (car lst)) (maplst fn (cdr lst))))
+         )                 
+    )
+    
+(defun five(arg)
+   (cond ((null arg) nil)
+          (t 5)
+     )
+)
+
+;3 Применение каждой функции в списке каждому агрументу списка
+
+(defun apl-apply(f x)
+    (mapcar #'(lambda (arg) (mapcar #'(lambda (func) (funcall func arg)) f)) x)   
+)
+
+
+
+
 ~~~
