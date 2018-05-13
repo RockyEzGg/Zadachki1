@@ -112,4 +112,52 @@
 
 
 
+
+
+
+
+
+
+;Макросы
+
+;1. Определите макрос, который возвращает свой вызов. 
+
+(defmacro f (&rest x)
+ `(quote (f ,x)))
+ (f a b c d)
+ 
+ ;2. Определите макрос (POP стек), который читает из стека верхний элемент и меняет значение переменной стека. 
+ 
+ (defmacro somepop (stack)
+  `(let ((first (car ,stack)))(setq ,stack (cdr ,stack))first))
+  
+ ;3. Определите лисповскую форму (IF условие p q) в виде макроса. 
+ 
+ (defmacro myif (res p q)
+    `(if res,p,q))
+  (write (myif (> 3 2 )3 2) )
 ~~~
+
+~~~ Haskell
+
+;;3 - Определите функцию, заменяющую в исходном списке все вхождения заданного значения другим.
+
+rep :: [Integer] -> Integer -> Integer -> [Integer]
+rep [] _ _ = []
+rep (xh:xt) element value = if element == xh then value:rep xt element value else xh:rep xt element value
+
+
+;;Выброс нечетных элементов списка
+
+odd :: [Integer] -> [Integer]
+odd [] = []
+odd (xh:xt) = (head xt) : odd (tail xt)
+
+;;15 - Скалярное произведение векторов
+
+multik :: [Integer] -> [Integer] -> Integer
+multik [] []= 0
+multik (xh:xt) (yh:yt) = (yh*xh) + (multik xt yt)
+
+~~~
+
